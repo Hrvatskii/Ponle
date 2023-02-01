@@ -1,0 +1,45 @@
+
+#new-game-button-container {
+  position: absolute;
+  top: 74px;
+  left: 10px;
+  z-index: 101;
+}
+
+#new-game-button,
+#give-up-button,
+.daily-practice-button {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  border: 1px solid gray;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+#new-game-button:hover,
+#give-up-button:hover,
+.daily-practice-button:hover {
+  background-color: rgb(24, 24, 24);
+}
+
+#new-game-button:active,
+#give-up-button:active,
+.daily-practice-button:active {
+  background-color: rgb(34, 34, 34);
+}
+
+#give-up-button-container {
+  position: absolute;
+  top: 124px;
+  left: 10px;
+  z-index: 101;
+}
+
+.daily-practice-container {
+  position: absolute;
+  top: 74px;
+  right: 10px;
+  z-index: 1000000;
+}

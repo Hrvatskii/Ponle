@@ -1,0 +1,66 @@
+.header {
+  position: absolute;
+  height: 64px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid gray;
+  z-index: 100;
+  background-color: black;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+#left-side {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100px;
+}
+
+#question-mark {
+  background-color: black;
+  height: 80%;
+  color: white;
+  border: none;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+.middle {
+  font-size: 1.6rem;
+  font-family: "Bakbak One", Arial;
+  text-align: center;
+  flex: 1;
+}
+
+.stats {
+  background-color: black;
+  border: none;
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  width: 100px;
+}
+
+.right-side button {
+  cursor: pointer;
+}
+
+.stats-icon {
+  height: 40px;
+}
+
+.options {
+  color: white;
+  background-color: black;
+  border: none;
+  font-size: 25px;
+}

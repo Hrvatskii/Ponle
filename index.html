@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Like Wordle but My Little Pony" />
+    <meta name="keywords" content="Wordle, My Little Pony" />
+    <title>Ponle</title>
+    <link rel="icon" href="icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/how-to-play.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/game-board.css" />
+    <link rel="stylesheet" href="styles/options.css" />
+    <link rel="stylesheet" href="styles/misc-buttons.css" />
+    <link rel="stylesheet" href="styles/keyboard.css" />
+    <link rel="stylesheet" href="styles/stats.css" />
+    <script
+      src="https://kit.fontawesome.com/4fbe2ea87c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div id="left-side">
+        <button id="question-mark">
+          <i class="fa-regular fa-circle-question fa-2x"></i>
+        </button>
+      </div>
+      <div class="middle">
+        <h1>Ponle</h1>
+      </div>
+      <div class="right-side">
+        <button class="stats" id="stats">
+          <img class="stats-icon" src="stats.png" alt="stats" />
+        </button>
+        <button class="options" id="options">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- MISC BUTTONS -->
+    <div id="new-game-button-container">
+      <button id="new-game-button">New Game</button>
+    </div>
+    <div id="give-up-button-container">
+      <button id="give-up-button">Give Up</button>
+    </div>
+    <div class="daily-practice-container">
+      <a href="/daily.html">
+        <button class="daily-practice-button" id="take-me-to-daily-button">
+          Daily Ponle
+        </button>
+      </a>
+    </div>
+
+    <!-- KEYBOARD -->
+    <div class="keyboard" id="keyboard-container">
+      <div class="keyboard-row" id="keyboard-numbers">
+        <button class="keyboard-key" data-key="1" id="1">1</button>
+        <button class="keyboard-key" data-key="2" id="2">2</button>
+        <button class="keyboard-key" data-key="3" id="3">3</button>
+        <button class="keyboard-key" data-key="4" id="4">4</button>
+        <button class="keyboard-key" data-key="5" id="5">5</button>
+        <button class="keyboard-key" data-key="6" id="6">6</button>
+        <button class="keyboard-key" data-key="7" id="7">7</button>
+        <button class="keyboard-key" data-key="8" id="8">8</button>
+        <button class="keyboard-key" data-key="9" id="9">9</button>
+        <button class="keyboard-key" data-key="0" id="0">0</button>
+      </div>
+
+      <div class="keyboard-row">
+        <button class="keyboard-key" data-key="Q" id="Q">Q</button>
+        <button class="keyboard-key" data-key="W" id="W">W</button>
+        <button class="keyboard-key" data-key="E" id="E">E</button>
+        <button class="keyboard-key" data-key="R" id="R">R</button>
+        <button class="keyboard-key" data-key="T" id="T">T</button>
+        <button class="keyboard-key" data-key="Y" id="Y">Y</button>
+        <button class="keyboard-key" data-key="U" id="U">U</button>
+        <button class="keyboard-key" data-key="I" id="I">I</button>
+        <button class="keyboard-key" data-key="O" id="O">O</button>
+        <button class="keyboard-key" data-key="P" id="P">P</button>
+        <button
+          class="special keyboard-key"
+          data-key="BACKSPACE"
+          id="BACKSPACE"
+        >
+          <i class="fa-solid fa-delete-left"></i>
+        </button>
+      </div>
+
+      <div class="keyboard-row">
+        <button class="keyboard-key" data-key="A" id="A">A</button>
+        <button class="keyboard-key" data-key="S" id="S">S</button>
+        <button class="keyboard-key" data-key="D" id="D">D</button>
+        <button class="keyboard-key" data-key="F" id="F">F</button>
+        <button class="keyboard-key" data-key="G" id="G">G</button>
+        <button class="keyboard-key" data-key="H" id="H">H</button>
+        <button class="keyboard-key" data-key="J" id="J">J</button>
+        <button class="keyboard-key" data-key="K" id="K">K</button>
+        <button class="keyboard-key" data-key="L" id="L">L</button>
+        <button class="keyboard-key" data-key="'" id="'">'</button>
+        <button class="special keyboard-key" data-key="ENTER" id="ENTER">
+          <img id="enter-arrow" src="arrow-enter.png" alt="ENTER" />
+        </button>
+      </div>
+
+      <div class="keyboard-row">
+        <button class="keyboard-key" data-key="Ñ" id="Ñ">Ñ</button>
+        <button class="keyboard-key" data-key="Z" id="Z">Z</button>
+        <button class="keyboard-key" data-key="X" id="X">X</button>
+        <button class="keyboard-key" data-key="C" id="C">C</button>
+        <button class="keyboard-key" data-key="V" id="V">V</button>
+        <button class="keyboard-key" data-key="B" id="B">B</button>
+        <button class="keyboard-key" data-key="N" id="N">N</button>
+        <button class="keyboard-key" data-key="M" id="M">M</button>
+        <button class="keyboard-key" data-key="." id=".">.</button>
+        <button class="keyboard-key" data-key="-" id="-">-</button>
+      </div>
+
+      <div class="keyboard-row">
+        <button class="keyboard-key" data-key="È" id="È">È</button>
+        <button class="space keyboard-key" data-key=" " id=" ">SPACE</button>
+        <button class="keyboard-key" data-key="Ú" id="Ú">Ú</button>
+      </div>
+    </div>
+
+    <!-- GAME BOARD -->
+
+    <div id="game-board">
+      <div id="pop-up">welcome to the HTML file :D</div>
+      <div id="rows-container">
+        <div class="row" id="row1">
+          <div class="arrow"><i class="fa-solid fa-arrow-up"></i></div>
+        </div>
+        <div class="row" id="row2">
+          <div class="arrow"><i class="fa-solid fa-arrow-up"></i></div>
+        </div>
+        <div class="row" id="row3">
+          <div class="arrow"><i class="fa-solid fa-arrow-up"></i></div>
+        </div>
+        <div class="row" id="row4">
+          <div class="arrow"><i class="fa-solid fa-arrow-up"></i></div>
+        </div>
+        <div class="row" id="row5">
+          <div class="arrow"><i class="fa-solid fa-arrow-up"></i></div>
+        </div>
+        <div class="row" id="row6">
+          <div class="arrow"><i class="fa-solid fa-arrow-up"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW TO PLAY WINDOW -->
+
+    <div id="how-to-play-container">
+      <div id="how-to-play">
+        <div class="x-button-container">
+          <p class="window-description">How To Play</p>
+          <button class="x-button" id="x-button">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
+        <div class="how-to-play-content">
+          <div class="description">
+            <p class="guess-the-ponle">Guess the Ponle in 6 tries.</p>
+          </div>
+          <div class="rules">
+            <ul class="real-rules">
+              <li class="rule">Each guess needs to be a pony from MLP:FiM</li>
+              <li class="rule">
+                The color of the tiles will change to show how close your guess
+                was to the pony.
+              </li>
+              <li>A new daily Ponle will be available every day.</li>
+            </ul>
+          </div>
+          <div class="examples">
+            <p id="example-text">Examples</p>
+            <div class="example-list">
+              <div class="example-one">
+                <div class="example-letter">F</div>
+                <div class="example-letter">L</div>
+                <div class="example-letter">U</div>
+                <div class="example-letter">T</div>
+                <div class="example-letter">T</div>
+                <div class="example-letter">E</div>
+                <div class="example-letter">R</div>
+                <div class="example-letter">S</div>
+                <div class="example-letter">H</div>
+                <div class="example-letter">Y</div>
+              </div>
+              <p class="explanation">
+                <span class="important-letter">L</span> is in the pony and in
+                the correct spot.
+              </p>
+
+              <div class="example-two">
+                <div class="example-letter">R</div>
+                <div class="example-letter">A</div>
+                <div class="example-letter">R</div>
+                <div class="example-letter">I</div>
+                <div class="example-letter">T</div>
+                <div class="example-letter">Y</div>
+              </div>
+              <p class="explanation">
+                <span class="important-letter">I</span> is in the pony but in
+                the wrong spot.
+              </p>
+
+              <div class="example-three">
+                <div class="example-letter">A</div>
+                <div class="example-letter">P</div>
+                <div class="example-letter">P</div>
+                <div class="example-letter">L</div>
+                <div class="example-letter">E</div>
+                <div class="example-letter">J</div>
+                <div class="example-letter">A</div>
+                <div class="example-letter">C</div>
+                <div class="example-letter">K</div>
+              </div>
+              <p class="explanation">
+                <span class="important-letter">C</span> is not in the pony in
+                any spot.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTIONS WINDOW -->
+
+    <div id="options-container">
+      <div id="options-window">
+        <div class="top-part">
+          <p class="window-description">Options</p>
+          <button class="x-button" id="options-x-button">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
+        <div id="options-content">
+          <div id="difficulty-settings">
+            <label class="difficulty" for="baby-mode"
+              >Baby difficulty: &nbsp;</label
+            >
+            <input
+              name="setting"
+              class="radio-input"
+              id="baby-mode"
+              type="radio"
+            />
+            <p class="difficulty-description">Literally just the mane six</p>
+
+            <label class="difficulty" for="normal-mode"
+              >Normal difficulty: &nbsp;
+            </label>
+            <input
+              name="setting"
+              class="radio-input"
+              id="normal-mode"
+              type="radio"
+              checked
+            />
+            <p class="difficulty-description">
+              Most notable and well known ponies
+            </p>
+
+            <label class="difficulty" for="extreme-mode"
+              >Extreme difficulty: &nbsp;
+            </label>
+            <input
+              name="setting"
+              class="radio-input"
+              id="extreme-mode"
+              type="radio"
+            />
+            <p class="difficulty-description">Every single pony in the show</p>
+          </div>
+
+          <div id="arrow-option">
+            <label class="difficulty" for="arrow-box"
+              >Play with arrow hints: &nbsp;
+            </label>
+            <input id="arrow-box" type="checkbox" checked />
+            <p class="difficulty-description">
+              Adds an arrow indicator showing if your guess is too low or high.
+            </p>
+          </div>
+
+          <div class="difficulty-description" id="how-to-apply">
+            To apply settings, start a new game.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS WINDOW -->
+
+    <div id="stats-container">
+      <div id="stats-window">
+        <div class="top-part">
+          <p class="window-description">Stats</p>
+          <button class="x-button" id="stats-x-button">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
+        <div id="general-stats">
+          <div class="stats-individual-container" id="stats-played">
+            <p class="stats-number-big" id="played-num"></p>
+            <p class="stats-text-under-number">Played</p>
+          </div>
+          <div class="stats-individual-container" id="stats-win-percentage">
+            <p class="stats-number-big" id="win-percent">0%</p>
+            <p class="stats-text-under-number">Win %</p>
+          </div>
+          <div class="stats-individual-container" id="stats-current-streak">
+            <p class="stats-number-big" id="current-streak"></p>
+            <p class="stats-text-under-number">Current Streak</p>
+          </div>
+          <div class="stats-individual-container" id="stats-max-streak">
+            <p class="stats-number-big" id="max-streak"></p>
+            <p class="stats-text-under-number">Max Streak</p>
+          </div>
+        </div>
+        <div id="guess-distribution">
+          <p id="guess-distribution-text">GUESS DISTRIBUTION</p>
+          <div id="guess-rows">
+            <div class="stats-row">
+              <p>1</p>
+              <div class="stats-filled" id="stats-1">10</div>
+            </div>
+
+            <div class="stats-row">
+              <p>2</p>
+              <div class="stats-filled" id="stats-2">10</div>
+            </div>
+
+            <div class="stats-row">
+              <p>3</p>
+              <div class="stats-filled" id="stats-3">10</div>
+            </div>
+
+            <div class="stats-row">
+              <p>4</p>
+              <div class="stats-filled" id="stats-4">10</div>
+            </div>
+
+            <div class="stats-row">
+              <p>5</p>
+              <div class="stats-filled" id="stats-5">10</div>
+            </div>
+
+            <div class="stats-row">
+              <p>6</p>
+              <div class="stats-filled" id="stats-6">10</div>
+            </div>
+
+            <div class="stats-row">
+              <p>X</p>
+              <div class="stats-filled" id="stats-7">10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="clear-stats-container">
+          <button class="stats-button" id="clear-stats-button">
+            Clear Stats
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
