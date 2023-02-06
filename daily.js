@@ -121,11 +121,13 @@ let played = localStorage.getItem("dailyPlayedD");
 let wins = localStorage.getItem("dailyWinsD");
 let currentStreak = localStorage.getItem("dailyCurrentStreakD");
 let maxStreak = localStorage.getItem("dailyMaxStreakD");
+let statPos;
 // on page load cookie settings thing idk
 
 window.onload = function() {
 
   localStorage.setItem("tempRow", `Daily Ponle #${differenceInDate} B/6 _`);
+	statPos = localStorage.getItem("tempRow").indexOf("B");
   // how to play window
   if(localStorage.getItem("howToPlayOpen") == null) {
     document.getElementById('how-to-play-container').style.display = 'flex';
@@ -305,29 +307,18 @@ document.getElementById('stats-x-button').onclick = function() {
 // clear stats remove later
 /*
 document.getElementById('clear-stats-button').onclick = function() {
-  const holyCookies = ["howToPlayOpen", "difficultyOption", "hints"];
-  const iAmSure = confirm("This action cannot be undone. Are you sure that you want to clear your stats?");
+  const holyCookies = ["wonStats", "wins", "currentStreak", "played", "maxStreak", "wonRow"]
+  //const holyCookies = ["howToPlayOpen", "difficultyOption", "hints", "dailyWonRowD", "dailyWonStatsD", "dailyWinsD", "dailyCurrentStreakD", "dailyPlayedD", "dailyMaxStreakD", "shareCopy", "tempRow", "dailyRow1", "dailyRow2", "dailyRow3", "dailyRow4", "dailyRow5", "dailyRow6", "hasWon", "guessRow"];
+  const iAmSure = confirm("This action cannot be undone. Are you sure that you want to clear your stats? This will only clear stats for the practice mode.");
   if (iAmSure) {
-    let cookieList = document.cookie.split("; ");
-    cookieList.forEach((cookie) => {
-      let cookieName = cookie.split("=")[0];
-      if (!holyCookies.includes(cookieName)) {
-        if (cookieName == "dailyWonStatsD" || cookieName == "wonStats" || cookieName == "shareCopy") {
-          localStorage.setItem("shareCopy", "")
-          localStorage.setItem("dailyWonStatsD", [0, 0, 0, 0, 0, 0, 0])
-          localStorage.setItem("wonStats", [0, 0, 0, 0, 0, 0, 0])
-        } else if (cookieName == "dailyRow1" || cookieName == "dailyRow2" || cookieName == "dailyRow3" || cookieName == "dailyRow4" || cookieName == "dailyRow5" || cookieName == "dailyRow6" || cookieName == "guessRow") {
-          deleteCookie(cookieName);
-        } else {
-          localStorage.setItem(cookieName, 0);
-        }
-      }
-    })
-    localStorage.setItem("hasWon", false)
+    Object.keys(localStorage).forEach(function(key){
+			localStorage.removeItem(key);
+    });
     window.location.reload();
   }
 }
 */
+
 
 // share
 
@@ -542,15 +533,16 @@ function computeGuess(rowGuess) {
         if (letter == rowGuess.length-1) {
           let tempRowVal = localStorage.getItem("tempRow");
           tempRowVal += ")"; //15
-          
-          let firstPart = tempRowVal.substr(0, 15);
-          let lastPart = tempRowVal.substr(15 + 1);
+					
+          let firstPart = tempRowVal.substr(0, statPos);
+          let lastPart = tempRowVal.substr(statPos + 1);
           let newTempRow;
           if (localStorage.getItem("dailyWonRowD") != 7) {
             newTempRow = firstPart + localStorage.getItem("guessRow") + lastPart;
           } else {
             newTempRow = firstPart + "X" + lastPart;
           }
+					console.log(newTempRow);
          // newTempRow = newTempRow.split(')').join(')');
           localStorage.setItem("shareCopy", newTempRow);
           localStorage.setItem("tempRow", newTempRow);
