@@ -111,7 +111,6 @@ window.onload = function() {
   } else {
     document.getElementById('arrow-box').checked = false;
   }
-  console.log(document.cookie)
 }
 
 
@@ -119,10 +118,10 @@ window.onload = function() {
 // stats screen logic
 
 function updateStats(wonRow) {
-  let wonStatsSum = localStorage.getItem("wonStats").split(",").map(Number).reduce((partialSum, a) => partialSum + a, 0);
+  let highestStat = Math.max.apply(Math, localStorage.getItem("wonStats").split(",").map(Number));
   for (let wonStat = 0; wonStat < document.getElementsByClassName('stats-filled').length; wonStat++) {
     document.getElementById(`stats-${wonStat+1}`).innerHTML = `${localStorage.getItem("wonStats").split(",")[wonStat]}`;
-    document.getElementById(`stats-${wonStat+1}`).style.minWidth = `${(localStorage.getItem("wonStats").split(",").map(Number)[wonStat]/wonStatsSum) * 300 + 10}px`;
+    document.getElementById(`stats-${wonStat+1}`).style.minWidth = `${(localStorage.getItem("wonStats").split(",").map(Number)[wonStat]/highestStat) * 300 + 10}px`;
     if (wonStat+1 != wonRow || wonRow == 8) {
       document.getElementById(`stats-${wonStat+1}`).style.backgroundColor = grayColor;
     } else {

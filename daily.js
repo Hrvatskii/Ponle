@@ -48,14 +48,15 @@ let month = date.getMonth()+1;
 let year = date.getFullYear();
 
 let currentDate = new Date(`${month}/${day}/${year}`);
-//let currentDate = new Date(`01/28/2023`); // change to which ever date you want to play that daily ponle
+//let currentDate = new Date(`01/29/2023`); // change to which ever date you want to play that daily ponle
 let differenceInTime = currentDate.getTime() - openingDate.getTime();
 
 month = month < 10 ? "0" + month : month;
 day = day < 10 ? "0" + day : day;
 
 // https://www.educative.io/answers/how-to-create-a-countdown-timer-using-javascript
-let countDownDate = new Date(`${year}-${month}-${day}T22:59:59Z`).getTime();
+let countDownDate = new Date();
+countDownDate.setHours(24, 0, 0, 0);
 
 let myfunc = setInterval(function() {
   let now = new Date().getTime();
@@ -241,10 +242,10 @@ function updateStats(wonRow) {
   } else {
     document.getElementById('share-button').style.display = "none";
   }
-  let wonStatsSum = localStorage.getItem("dailyWonStatsD").split(",").map(Number).reduce((partialSum, a) => partialSum + a, 0);
+  let highestStat = Math.max.apply(Math, localStorage.getItem("dailyWonStatsD").split(",").map(Number));
   for (let wonStat = 0; wonStat < document.getElementsByClassName('stats-filled').length; wonStat++) {
     document.getElementById(`stats-${wonStat+1}`).innerHTML = `${localStorage.getItem("dailyWonStatsD").split(",")[wonStat]}`;
-    document.getElementById(`stats-${wonStat+1}`).style.minWidth = `${(localStorage.getItem("dailyWonStatsD").split(",").map(Number)[wonStat]/wonStatsSum) * 300 + 10}px`;
+    document.getElementById(`stats-${wonStat+1}`).style.minWidth = `${(localStorage.getItem("dailyWonStatsD").split(",").map(Number)[wonStat]/highestStat) * 300 + 10}px`;
     if (wonStat+1 != wonRow || wonRow == 8) {
       document.getElementById(`stats-${wonStat+1}`).style.backgroundColor = grayColor;
     } else {
@@ -542,7 +543,6 @@ function computeGuess(rowGuess) {
           } else {
             newTempRow = firstPart + "X" + lastPart;
           }
-					console.log(newTempRow);
          // newTempRow = newTempRow.split(')').join(')');
           localStorage.setItem("shareCopy", newTempRow);
           localStorage.setItem("tempRow", newTempRow);
